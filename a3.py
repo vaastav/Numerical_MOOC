@@ -1,6 +1,6 @@
 import numpy as np
 
-def richtymer():
+def richtymer(u,f):
 
 nx = 81
 dx = .25
