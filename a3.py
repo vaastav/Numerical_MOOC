@@ -8,6 +8,15 @@ def compute_pressure( rho, e, gamma ):
 	pressure = ( gamma - 1 ) * rho * e
 	return pressure
 
+def compute_flux( u, rho, e_T, gamma ):
+	flux = []
+	flux += [ rho * u ]
+	internal_energy = compute_internal_energy( u, e_T, gamma )
+	pressure = ( rho, internal_energy, gamma )
+	flux += [ rho*u*u + pressure ] 
+	flux += [ ( rho*e_T + pressure ) * u ]
+	return flux
+
 nx = 81
 dx = .25
 dt = .0002
