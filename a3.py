@@ -1,6 +1,8 @@
 import numpy as np
 
-def richtymer(u,f):
+def compute_pressure( rho, e, gamma ):
+	pressure = ( gamma - 1 ) * rho * e
+	return pressure
 
 nx = 81
 dx = .25
