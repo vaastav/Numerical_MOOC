@@ -1,5 +1,9 @@
 import numpy as np
 
+def compute_internal_energy( u, e_T, gamma ):
+	internal_energy = e_T + u*u/2
+	return internal_energy
+
 def compute_pressure( rho, e, gamma ):
 	pressure = ( gamma - 1 ) * rho * e
 	return pressure
