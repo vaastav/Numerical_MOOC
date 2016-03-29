@@ -17,22 +17,22 @@ def compute_flux( u, rho, e_T, gamma ):
 	flux += [ ( rho*e_T + pressure ) * u ]
 	return flux
 
-def richtymer(u_vec,u_vec_half,u_vec_full,flux,flux_half,nx,dx,dt,nt,gamma):
+def richtymer(nx,dx,dt,nt,gamma):
 	t = 0
 	for i in range( 1, int(nt) ):
 		t += dt
+		x = 0
 		for j in range( 2, nx ):
+			x += dx
 			# Step 1
-			u_vec_half[j,:] = 0.5 * ( u_vec[j+1,:] + u_vec[j,:] ) - dt/(2*dx) * ( flux[i+1,:] - flux[i,:])
 
 			# Step 2
-			u_vec_full[i,:] = u_vec[i,:] - dt/dx*(flux_half[i,:] - flux[i-1,:]) 
 
 
 nx = 81
 dx = .25
 dt = .0002
-nt = .05/dt + 1
+nt = .01/dt + 1
 gamma = 1.4
 
 # Initial conditions on the left side
